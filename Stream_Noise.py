@@ -10,12 +10,22 @@ import streamlit as st
 import plotly.express as px
 import plotly.graph_objects as go
 
+st.title('Noise Management - Analysis')
 
-st.title('Food Demand Forecasting - Analytics Vidhya')
+@st.cache
+def load_data(nrows):
+    data = pd.read_csv('Group_noise.csv', nrows=nrows)
+    return data
+
+noise_data = load_data(2000)
+#Noise_Demand Data
+st.subheader('Noise Test Data')
+st.write(noise_data)    
 
 def plot():
     
-    df = pd.read_csv('Group_noise.csv')
+    #df = pd.read_csv('Group_noise.csv')
+    df = noise_data
 
     clist = df["Test"].unique().tolist()
 
@@ -31,8 +41,9 @@ def plot():
     st.plotly_chart(fig)
 
 
-plot()
 
+
+plot()
 
 
 
