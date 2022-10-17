@@ -37,7 +37,7 @@ def plot():
     fig = go.Figure()
     for Test, df in dfs.items():
         fig = fig.add_trace(go.Scatter(x=df["Frequency"], y=df["Fixtures"], name=Test))
-        fig.update_layout(autosize=False, width=500, height=500)
+        fig.update_layout(autosize=False, width=800, height=500)
 
     st.plotly_chart(fig)
 
