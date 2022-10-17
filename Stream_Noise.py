@@ -11,6 +11,8 @@ import plotly.express as px
 import plotly.graph_objects as go
 
 
+st.title('Food Demand Forecasting - Analytics Vidhya')
+
 def plot():
     
     df = pd.read_csv('Group_noise.csv')
