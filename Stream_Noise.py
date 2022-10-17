@@ -17,7 +17,13 @@ def load_data(nrows):
     data = pd.read_csv('Group_noise.csv', nrows=nrows)
     return data
 
+@st.cache
+def load_data1(nrows):
+    data1 = pd.read_csv('All_Frequency.csv', nrows=nrows)
+    return data1    
+
 noise_data = load_data(2000)
+noise_data2 = load_data1(2000)
 #Noise_Demand Data
 st.subheader('Noise Test Data')
 st.write(noise_data)    
@@ -43,10 +49,28 @@ def plot():
 
 
 
+def plot1():
+    
+    
+    df = noise_data2
+
+    clist = df["Test"].unique().tolist()
+
+    tests = st.multiselect("Select Test Run", clist)
+    #st.header("You selected: {}".format(", ".join(tests)))
+
+    dfs = {Test: df[df["Test"] == Test] for Test in tests}
+
+    fig = go.Figure()
+    for Test, df in dfs.items():
+        fig = fig.add_trace(go.Scatter(x=df["Frequency"], y=df["Fixtures"], name=Test))
+        fig.update_layout(autosize=False, width=800, height=500)
+
+    st.plotly_chart(fig)   
+
 
 plot()
 
-
-
-
-
+st.subheader('All Frequencies test')
+st.write(noise_data2)    
+plot1()
