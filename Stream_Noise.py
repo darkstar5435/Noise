@@ -71,6 +71,6 @@ def plot1():
 
 plot()
 
-st.subheader('All Frequencies test')
+st.subheader('All Frequencies test with flow and no flow')
 st.write(noise_data2)    
 plot1()
