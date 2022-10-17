@@ -18,7 +18,7 @@ def plot():
     clist = df["Test"].unique().tolist()
 
     tests = st.multiselect("Select Test Run", clist)
-    st.header("You selected: {}".format(", ".join(tests)))
+    #st.header("You selected: {}".format(", ".join(tests)))
 
     dfs = {Test: df[df["Test"] == Test] for Test in tests}
 
